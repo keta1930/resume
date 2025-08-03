@@ -1,47 +1,107 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>keta1930 - 个人简历</title>
+    <title>keta1930 - Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <!-- 头部信息 -->
-        <header class="header">
-            <div class="profile">
-                <div class="avatar">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="info">
-                    <h1>keta1930</h1>
-                    <p class="title">开发者 & 开源贡献者</p>
-                    <div class="contact">
-                        <a href="https://github.com/keta1930" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="mailto:your-email@example.com">
-                            <i class="fas fa-envelope"></i> Email
-                        </a>
-                    </div>
+        <!-- 顶部导航栏 -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1 class="logo">keta1930</h1>
+            </div>
+            <div class="nav-center">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="about">
+                        <span data-en="About" data-zh="个人">About</span>
+                    </button>
+                    <button class="nav-tab" data-tab="projects">
+                        <span data-en="Projects" data-zh="项目">Projects</span>
+                    </button>
+                    <button class="nav-tab" data-tab="papers">
+                        <span data-en="Papers" data-zh="论文">Papers</span>
+                    </button>
                 </div>
             </div>
-        </header>
+            <div class="nav-right">
+                <button class="lang-switcher" id="langSwitcher">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLang">EN</span>
+                </button>
+            </div>
+        </nav>
 
-        <!-- 主要内容 -->
+        <!-- 主要内容区域 -->
         <main class="main-content">
-            <!-- 关于我 -->
-            <section class="section">
-                <h2><i class="fas fa-user"></i> 关于我</h2>
-                <p>专注于Agent开发和MCP（Model Context Protocol）技术的开发者，致力于构建高效的Agent系统框架。</p>
+            <!-- 个人页面 -->
+            <section class="tab-content active" id="about">
+                <div class="hero-section">
+                    <div class="hero-left">
+                        <div class="avatar-container">
+                            <div class="avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        <h1 class="name">keta1930</h1>
+                        <div class="tags">
+                            <span class="tag" data-en="Independent Developer" data-zh="独立开发者">Independent Developer</span>
+                            <span class="tag" data-en="AI Agent Engineer" data-zh="AI Agent工程师">AI Agent Engineer</span>
+                        </div>
+                        <p class="bio" data-en="Passionate about building intelligent agent systems and contributing to open-source projects. Focused on MCP (Model Context Protocol) and agent development frameworks." data-zh="专注于构建智能Agent系统并为开源项目做贡献。专注于MCP（模型上下文协议）和Agent开发框架。">
+                            Passionate about building intelligent agent systems and contributing to open-source projects. Focused on MCP (Model Context Protocol) and agent development frameworks.
+                        </p>
+                        <div class="contact-links">
+                            <a href="mailto:yandeheng1@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>yandeheng1@gmail.com</span>
+                            </a>
+                            <a href="https://github.com/keta1930" target="_blank" class="contact-link">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h2 data-en="Technical Skills" data-zh="技术技能">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3 data-en="Core Technologies" data-zh="核心技术">Core Technologies</h3>
+                            <div class="skill-tags">
+                                <span>Agent Development</span>
+                                <span>MCP Protocol</span>
+                                <span>Graph Systems</span>
+                                <span>AI/ML</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3 data-en="Tools & Platforms" data-zh="工具平台">Tools & Platforms</h3>
+                            <div class="skill-tags">
+                                <span>GitHub</span>
+                                <span>Git</span>
+                                <span>Open Source</span>
+                                <span>API Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <!-- 开源项目 -->
-            <section class="section">
-                <h2><i class="fas fa-code-branch"></i> 开源项目</h2>
-                <div class="project-grid">
+            <!-- 项目页面 -->
+            <section class="tab-content" id="projects">
+                <div class="page-header">
+                    <h1 data-en="Projects" data-zh="项目">Projects</h1>
+                    <p data-en="Open-source projects and contributions" data-zh="开源项目和贡献">Open-source projects and contributions</p>
+                </div>
+
+                <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-header">
                             <h3>
@@ -49,75 +109,65 @@
                                     MCP Agent Graph (MAG)
                                 </a>
                             </h3>
-                            <span class="project-type">框架</span>
+                            <div class="project-stats">
+                                <span class="stars">
+                                    <i class="fas fa-star"></i>
+                                    81
+                                </span>
+                            </div>
                         </div>
-                        <p class="project-description">
-                            基于图、节点和MCP协议的Agent开发框架，用于快速构建复杂的Agent系统。
-                            该项目提供了一套完整的解决方案，让开发者能够高效地构建和部署Agent应用。
+                        <p class="project-description" data-en="An agent development framework for rapidly building agent systems based on graphs, nodes, and MCP." data-zh="基于图、节点和MCP协议快速构建Agent系统的开发框架。">
+                            An agent development framework for rapidly building agent systems based on graphs, nodes, and MCP.
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MCP</span>
-                            <span class="tech-tag">Agent</span>
-                            <span class="tech-tag">Graph</span>
-                            <span class="tech-tag">Framework</span>
-                        </div>
                         <div class="project-links">
-                            <a href="https://github.com/keta1930/mcp-agent-graph" target="_blank">
-                                <i class="fab fa-github"></i> 查看源码
+                            <a href="https://github.com/keta1930/mcp-agent-graph" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                <span data-en="View Source" data-zh="查看源码">View Source</span>
                             </a>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- 技能 -->
-            <section class="section">
-                <h2><i class="fas fa-tools"></i> 技术技能</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>开发技术</h4>
-                        <div class="skill-tags">
-                            <span>Agent Development</span>
-                            <span>MCP Protocol</span>
-                            <span>Graph Systems</span>
+                    <!-- 预留空间卡片 -->
+                    <div class="project-card placeholder">
+                        <div class="placeholder-content">
+                            <i class="fas fa-plus-circle"></i>
+                            <p data-en="More projects coming soon..." data-zh="更多项目即将到来...">More projects coming soon...</p>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h4>工具平台</h4>
-                        <div class="skill-tags">
-                            <span>GitHub</span>
-                            <span>Git</span>
-                            <span>开源协作</span>
+
+                    <div class="project-card placeholder">
+                        <div class="placeholder-content">
+                            <i class="fas fa-plus-circle"></i>
+                            <p data-en="More projects coming soon..." data-zh="更多项目即将到来...">More projects coming soon...</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 联系方式 -->
-            <section class="section">
-                <h2><i class="fas fa-paper-plane"></i> 联系我</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <strong>GitHub</strong>
-                            <a href="https://github.com/keta1930" target="_blank">github.com/keta1930</a>
-                        </div>
+            <!-- 论文页面 -->
+            <section class="tab-content" id="papers">
+                <div class="page-header">
+                    <h1 data-en="Papers" data-zh="论文">Papers</h1>
+                    <p data-en="Research publications and academic contributions" data-zh="研究发表和学术贡献">Research publications and academic contributions</p>
+                </div>
+
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fas fa-file-alt"></i>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong>
-                            <span>yandeheng1@gmail.com</span>
-                        </div>
-                    </div>
+                    <h3 data-en="Papers Coming Soon" data-zh="论文即将发布">Papers Coming Soon</h3>
+                    <p data-en="I'm currently working on research that will be published here." data-zh="我目前正在进行研究工作，论文将在此发布。">
+                        I'm currently working on research that will be published here.
+                    </p>
                 </div>
             </section>
         </main>
 
         <!-- 页脚 -->
         <footer class="footer">
-            <p>&copy; 2025 keta1930. 托管在 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+            <p data-en="Built with ❤️ and hosted on GitHub Pages" data-zh="用 ❤️ 构建，托管于 GitHub Pages">
+                Built with ❤️ and hosted on GitHub Pages
+            </p>
         </footer>
     </div>
 
