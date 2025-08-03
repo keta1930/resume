@@ -15,35 +15,19 @@ let currentLanguage = 'en';
 
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
-    // 初始化语言设置
     initializeLanguage();
-    
-    // 初始化标签页
     initializeTabs();
-    
-    // 添加语言切换事件
     addLanguageSwitcher();
-    
-    // 添加动画效果
     addAnimations();
-    
-    // 添加交互效果
     addInteractiveEffects();
-    
-    // 添加键盘快捷键
     addKeyboardShortcuts();
 });
 
 // 初始化语言设置
 function initializeLanguage() {
-    // 从本地存储获取语言偏好，默认英文
     const savedLanguage = localStorage.getItem('preferred-language') || 'en';
     currentLanguage = savedLanguage;
-    
-    // 更新页面语言
     updatePageLanguage(currentLanguage);
-    
-    // 更新语言按钮显示
     updateLanguageButton();
 }
 
@@ -62,7 +46,6 @@ function initializeTabs() {
 
 // 切换标签页
 function switchTab(targetTab) {
-    // 移除所有活动状态
     document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.classList.remove('active');
     });
@@ -71,11 +54,9 @@ function switchTab(targetTab) {
         content.classList.remove('active');
     });
     
-    // 添加新的活动状态
     document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
     document.getElementById(targetTab).classList.add('active');
     
-    // 平滑滚动到顶部
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -88,21 +69,14 @@ function addLanguageSwitcher() {
     const currentLangSpan = document.getElementById('currentLang');
     
     langSwitcher.addEventListener('click', () => {
-        // 切换语言
         currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
         
-        // 添加切换动画
         document.body.classList.add('lang-switching');
         
-        // 延迟更新内容以实现平滑过渡
         setTimeout(() => {
             updatePageLanguage(currentLanguage);
             updateLanguageButton();
-            
-            // 保存语言偏好
             localStorage.setItem('preferred-language', currentLanguage);
-            
-            // 移除切换动画
             document.body.classList.remove('lang-switching');
         }, 150);
     });
@@ -119,7 +93,6 @@ function updatePageLanguage(lang) {
         }
     });
     
-    // 更新页面语言属性
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 }
 
@@ -131,13 +104,11 @@ function updateLanguageButton() {
 
 // 添加动画效果
 function addAnimations() {
-    // 观察器选项
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
-    // 创建观察器
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -147,8 +118,7 @@ function addAnimations() {
         });
     }, observerOptions);
 
-    // 观察需要动画的元素
-    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .hero-section');
+    const animatedElements = document.querySelectorAll('.project-card, .hero-section');
     animatedElements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
@@ -159,16 +129,8 @@ function addAnimations() {
 
 // 添加交互效果
 function addInteractiveEffects() {
-    // 项目卡片悬停效果
     addProjectCardEffects();
-    
-    // 头像悬停效果
     addAvatarEffects();
-    
-    // 技能标签效果
-    addSkillTagEffects();
-    
-    // 导航标签效果
     addNavTabEffects();
 }
 
@@ -177,7 +139,6 @@ function addProjectCardEffects() {
     const projectCards = document.querySelectorAll('.project-card:not(.placeholder)');
     
     projectCards.forEach(card => {
-        // 鼠标进入效果
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-8px) scale(1.02)';
         });
@@ -186,9 +147,8 @@ function addProjectCardEffects() {
             this.style.transform = 'translateY(0) scale(1)';
         });
         
-        // 点击涟漪效果
         card.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A') return; // 跳过链接点击
+            if (e.target.tagName === 'A') return;
             
             const ripple = document.createElement('div');
             const rect = this.getBoundingClientRect();
@@ -238,21 +198,6 @@ function addAvatarEffects() {
     }
 }
 
-// 技能标签效果
-function addSkillTagEffects() {
-    const skillTags = document.querySelectorAll('.skill-tags span');
-    
-    skillTags.forEach(tag => {
-        tag.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.05)';
-        });
-        
-        tag.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-}
-
 // 导航标签效果
 function addNavTabEffects() {
     const navTabs = document.querySelectorAll('.nav-tab');
@@ -275,7 +220,6 @@ function addNavTabEffects() {
 // 添加键盘快捷键
 function addKeyboardShortcuts() {
     document.addEventListener('keydown', function(e) {
-        // Alt + 1/2/3 切换标签页
         if (e.altKey) {
             switch(e.key) {
                 case '1':
@@ -293,7 +237,6 @@ function addKeyboardShortcuts() {
             }
         }
         
-        // Ctrl/Cmd + Shift + L 切换语言
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'L') {
             e.preventDefault();
             document.getElementById('langSwitcher').click();
@@ -311,7 +254,6 @@ const rippleCSS = `
     }
 `;
 
-// 插入动画样式
 if (!document.getElementById('ripple-style')) {
     const style = document.createElement('style');
     style.id = 'ripple-style';
@@ -350,7 +292,6 @@ function showLoadingProgress() {
     }, 50);
 }
 
-// 启动加载进度
 showLoadingProgress();
 
 // 平滑滚动到锚点
@@ -369,29 +310,31 @@ function addSmoothScrolling() {
     });
 }
 
-// 添加鼠标跟踪效果（可选）
-function addMouseTracker() {
-    let mouseX = 0;
-    let mouseY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        // 为某些元素添加鼠标跟踪效果
-        const hero = document.querySelector('.hero-section');
-        if (hero) {
-            const rect = hero.getBoundingClientRect();
-            const x = ((mouseX - rect.left) / rect.width - 0.5) * 10;
-            const y = ((mouseY - rect.top) / rect.height - 0.5) * 10;
-            
-            const avatar = hero.querySelector('.avatar');
-            if (avatar) {
-                avatar.style.transform = `translate(${x}px, ${y}px)`;
+// 性能优化：图片懒加载
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
             }
-        }
+        });
     });
+
+    images.forEach(img => imageObserver.observe(img));
 }
+
+// 初始化所有功能
+function initializeAll() {
+    addSmoothScrolling();
+    lazyLoadImages();
+}
+
+// 页面完全加载后执行额外初始化
+window.addEventListener('load', initializeAll);
 
 // 控制台彩蛋
 console.log(`
@@ -416,30 +359,3 @@ document.addEventListener('visibilitychange', function() {
         document.title = 'keta1930 - Portfolio';
     }
 });
-
-// 性能优化：图片懒加载（如果有图片）
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// 初始化所有功能
-function initializeAll() {
-    addSmoothScrolling();
-    lazyLoadImages();
-    // addMouseTracker(); // 可选：取消注释以启用鼠标跟踪效果
-}
-
-// 页面完全加载后执行额外初始化
-window.addEventListener('load', initializeAll);
