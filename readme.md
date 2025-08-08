@@ -1,7 +1,5 @@
 # keta1930's Portfolio
 
-🌟 **Personal Portfolio Website**
-
 👉 **[Visit Portfolio](https://keta1930.github.io/resume/)**
 
 ## Quick Links
@@ -10,8 +8,6 @@
 
 
 # keta1930 的个人主页
-
-🌟 **个人作品集网站**
 
 👉 **[访问主页](https://keta1930.github.io/resume/)**
 
